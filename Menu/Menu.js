@@ -1,13 +1,6 @@
 /* This is the data we will be using, study it but don't change anything, yet. */
 
-let menuItems = [
-  'Students',
-  'Faculty',
-  "What's New",
-  'Tech Trends',
-  'Music',
-  'Log Out'
-];
+let menuItems = ['Students', 'Faculty', "What's New", 'Tech Trends', 'Music', 'Hire Jackson Ogles', 'Log Out'];
 
 /* 
 
@@ -33,3 +26,34 @@ let menuItems = [
   Step 6: add the menu component to the DOM.
   
 */
+//Created a function
+// functions job is to create component for you
+// created lego pieces
+function createMenu(data) {
+  const menu = document.createElement('div');
+  const list = document.createElement('ul');
+
+  data.forEach(array => {
+    const items = document.createElement('li');
+    items.textContent = array;
+    list.appendChild(items);
+  });
+
+  //Created Structure
+  // glues lego pieces together
+  menu.appendChild(list);
+  // This creates class that is then added to the html we have created and names them
+
+  menu.classList.add('menu');
+  //This creates an event which works when the button is clicked
+  const button = document.querySelector('.menu-button');
+  button.addEventListener('click', () => {
+    menu.classList.toggle('menu--open');
+  });
+
+  return menu;
+}
+
+//This adds the menu component to the DOM.
+
+const header = document.querySelector('.header').appendChild(createMenu(menuItems));
